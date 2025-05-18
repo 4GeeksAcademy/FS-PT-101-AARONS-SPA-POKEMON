@@ -9,7 +9,7 @@ export const Details = () => {
 
     useEffect(() => {
         PokeApi.getSinglePokemon(id).then(data => dispatch({ type: 'get_pokemon_details', payload: data }))
-    }, []);
+    }, [id]);
 
     return (
         <div className="container text-center text-capitalize mt-5 d-flex justify-content-center align-items-center">

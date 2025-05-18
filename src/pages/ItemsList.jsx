@@ -14,8 +14,8 @@ export const ItemsList = () => {
         <div className="container">
             <div className="row justify-content-center mt-5">
                 {store.items?.results?.map((el, i) => (
-                    <div className="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-5">
-                        <ItemCard key={i} name={el.name} url={el.url} /> </div>))}
+                    <div key={el.name} className="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-5">
+                        <ItemCard name={el.name} url={el.url} /> </div>))}
             </div>
         </div>
     )

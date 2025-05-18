@@ -10,7 +10,7 @@ export const ItemsDetails = () =>{
     
     useEffect(()=>{
         PokeApi.getSingleItem(name).then(data=>dispatch({type: 'get_item_details', payload : data}));
-    },[]);
+    },[name]);
 
     return(
         <div className="container text-center text-capitalize mt-5 d-flex justify-content-center align-items-center">

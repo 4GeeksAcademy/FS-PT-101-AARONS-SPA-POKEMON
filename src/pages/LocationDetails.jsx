@@ -10,7 +10,7 @@ export const LocationDetails = () =>{
 
     useEffect(()=>{
         PokeApi.getSingleLocation(name).then(data=>dispatch({type: 'get_location_details', payload : data}));
-    },[]);
+    },[name]);
 
     return(
         <div className="container text-center text-capitalize mt-5 d-flex justify-content-center align-items-center">

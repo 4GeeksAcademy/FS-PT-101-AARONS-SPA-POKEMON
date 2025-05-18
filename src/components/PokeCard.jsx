@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 
@@ -7,13 +7,13 @@ export const PokemonCard = ({ name, url }) => {
 
     const pid = url.split('/')[6];
 
-    const isFavorite = store.favorites.some(p=>p.id === pid);
+    const isFavorite = store.favorites.some(p => p.id === pid && p.type === 'pokemon');
 
     const handleToggleFavorite = () => {
         if(isFavorite){
-            dispatch({type: 'remove_favorite', payload: pid});
+            dispatch({type: 'remove_favorite', payload:{id: pid, type: 'pokemon'}});
         }else{
-            dispatch({type: 'add_favorite', payload: {id: pid, name: name}});
+            dispatch({type: 'add_favorite', payload: {id: pid, name: name, type : 'pokemon'}});
         }
     }
 
@@ -25,7 +25,7 @@ export const PokemonCard = ({ name, url }) => {
                     <h5 className="card-title text-center fs-2">{name}</h5>
                     <div className="mt-3 text-center d-flex justify-content-around">
                         <Link className="btn btn-primary" to={'/details/'+pid}>Read more</Link>
-                        <button onClick={handleToggleFavorite} className={`btn ms-2 ${isFavorite ? 'btn-warning' : 'btn-secondary'}`}><i class="fa-regular fa-heart"></i></button>
+                        <button onClick={handleToggleFavorite} className={`btn ms-2 ${isFavorite ? 'btn-warning' : 'btn-secondary'}`}><i className="fa-regular fa-heart"></i></button>
                     </div>
                 </div>
             </div>

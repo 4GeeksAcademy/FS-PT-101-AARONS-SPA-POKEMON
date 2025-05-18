@@ -14,8 +14,8 @@ export const LocationList = () => {
         <div className="container">
             <div className="row justify-content-center mt-5">
                 {store.locations?.results?.map((el, i) => (
-                    <div className="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-5">
-                        <LocationsCard key={i} name={el.name} url={el.url} /> </div>))}
+                    <div key={el.name} className="col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-5">
+                        <LocationsCard name={el.name} url={el.url} /> </div>))}
             </div>
         </div>
     )

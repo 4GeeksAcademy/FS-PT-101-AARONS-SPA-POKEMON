@@ -7,7 +7,7 @@ export const initialStore=()=>{
 export default function storeReducer(store, action = {}) {
   switch(action.type){
     case 'add_favorite':
-      if(store.favorites.find(p => p.id === action.payload.id)) return store;
+      if(store.favorites.find(p => p.id === action.payload.id && p.type === action.payload.type)) return store;
       return{
         ...store,
         favorites: [...store.favorites, action.payload]
@@ -15,7 +15,7 @@ export default function storeReducer(store, action = {}) {
     case 'remove_favorite':
       return{
         ...store,
-        favorites: store.favorites.filter(p=>p.id !== action.payload)
+        favorites: store.favorites.filter(p=>!(p.id === action.payload.id && p.type === action.payload.type))
       };
     case 'get_pokemon_details':
       return{
